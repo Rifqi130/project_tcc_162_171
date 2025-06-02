@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style/style.css" rel="stylesheet">
+    <style>
+        .dashboard-card {
+            background: #343a40;
+            border-radius: 12px;
+            padding: 2rem 1rem 1rem 1rem;
+            margin: 1rem 0;
+        }
+        .dashboard-card img {
+            width: 180px;
+            display: block;
+            margin: 0 auto 1rem auto;
+        }
+        .dashboard-card .btn {
+            width: 100%;
+        }
+        .dashboard-header {
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+    <!-- Navbar Hamburger -->
+    <nav class="navbar navbar-dark bg-dark fixed-top shadow">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" href="../admin/admindashboard.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="../user/memberlist.html">Member List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#">Book List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#" id="logoutBtn">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <!-- End Navbar -->
+
+    <div class="container dashboard-header text-center">
+        <h2 class="fw-bold">home page</h2>
+        <p class="fs-5 mb-2">Welcome back, <span class="fw-bold">admin</span></p>
+        <button class="btn btn-warning me-2">Request (0)</button>
+        <button class="btn btn-danger" id="logoutBtn2">Log Out</button>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-5">
+                <div class="dashboard-card text-center">
+                    <img src="../img/books.png" alt="Books">
+                    <h4>Booklist</h4>
+                    <hr class="bg-light">
+                    <p>List of all books in the Hogwarts Library.</p>
+                    <a href="#" class="btn btn-success">Edit booklist</a>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="dashboard-card text-center">
+                    <img src="../img/harry.png" alt="Member">
+                    <h4>Member list</h4>
+                    <hr class="bg-light">
+                    <p>List of all members in the Hogwarts Library.</p>
+                    <a href="editmemberlist.html" class="btn btn-success">Edit member</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Logout: hapus role dan redirect ke login
+    document.getElementById('logoutBtn').onclick = function() {
+        localStorage.removeItem('role');
+        window.location.href = 'loginadmin.html';
+    };
+    document.getElementById('logoutBtn2').onclick = function() {
+        localStorage.removeItem('role');
+        window.location.href = 'loginadmin.html';
+    };
+    // Optional: Cek role, redirect jika bukan admin
+    if (localStorage.getItem('role') !== 'admin') {
+        window.location.href = 'loginadmin.html';
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
